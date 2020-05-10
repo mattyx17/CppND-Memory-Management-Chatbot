@@ -22,16 +22,18 @@ private:
     int ComputeLevenshteinDistance(std::string s1, std::string s2);
 
 public:
-    // constructors / destructors
+    // constructors
     ChatBot();                     // constructor WITHOUT memory allocation
     ChatBot(std::string filename); // constructor WITH memory allocation
-    ~ChatBot();
 
-    //// STUDENT CODE
-    ////
+    // rule of five
+    ~ChatBot();                                    // destructor
+    ChatBot(const ChatBot &sourceBot);             // copy constructor
+    ChatBot &operator=(const ChatBot &sourceBot);  // assignment operator
+    ChatBot(ChatBot &&sourceBot);                  // move constructor
+    ChatBot &operator=(ChatBot &&sourceBot);       // move assignment operator
 
-    ////
-    //// EOF STUDENT CODE
+    bool operator!=(const ChatBot &chatBot);
 
     // getters / setters
     void SetCurrentNode(GraphNode *node);
